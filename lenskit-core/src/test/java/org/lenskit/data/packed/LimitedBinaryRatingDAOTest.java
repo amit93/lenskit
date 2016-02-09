@@ -96,6 +96,21 @@ public class LimitedBinaryRatingDAOTest {
     }
 
     /**
+     * Test for the minimum timestamp value in DAO,
+     * it should return empty DAO
+     *
+     * @throws IOException
+     */
+    @Test
+    public void testLimitForMin() throws IOException {
+        BinaryRatingDAO brDao = dao.createWindowedView(1000L);
+        assertThat(ObjectStreams.makeList(brDao.streamEvents()),
+                   hasSize(0));
+        assertThat(brDao.getUserIds(), hasSize(0));
+        assertThat(brDao.getItemIds(), hasSize(0));
+    }
+
+    /**
      * Test for timestamp greater than highest timestamp in ratings list,
      * all the values in ratings list should match
      * @throws IOException

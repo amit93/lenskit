@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/lenskit/lenskit.png?branch=master)](https://travis-ci.org/lenskit/lenskit)
 [![Windows build status](https://ci.appveyor.com/api/projects/status/github/lenskit/lenskit?branch=master)](https://ci.appveyor.com/project/elehack/lenskit)
+[![SonarQube test coverage](https://img.shields.io/sonar/https/sonar.cs.txstate.edu/org.grouplens.lenskit:lenskit/coverage.svg)](https://sonar.cs.txstate.edu/dashboard/index/1)
+[![Join the chat at https://gitter.im/lenskit/lenskit](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/lenskit/lenskit?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 LensKit is an implementation of collaborative filtering algorithms and
 a set of tools for benchmarking them.  This readme is about working with
@@ -29,12 +31,7 @@ install`; it is then available to other projects by depending directly
 on it in your Maven, Gradle, Ivy, or SBT project.  The source code can
 also be checked out and used in most Java IDEs.
 
-Some of the tests require the [Pandas][] library for Python; if you want to run all the tests (`./gradlew check`), install it with with your operating system's package manager (yum, apt-get, brew, etc.), or use `pip`:
-
-    pip install --user pandas
-
-[Gradle]: http://www.gradle.org
-[Pandas]: http://pandas.pydata.org/
+[Gradle]: http://gradle.org
 
 ## Working with the Code
 

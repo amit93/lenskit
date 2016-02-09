@@ -37,6 +37,7 @@ public class TextDataSourceSpec extends DataSourceSpec {
     private List<String> fields;
     private Path itemFile;
     private Path itemNameFile;
+    private int headerLines;
 
     @Override
     public String getName() {
@@ -46,6 +47,22 @@ public class TextDataSourceSpec extends DataSourceSpec {
         } else {
             return name;
         }
+    }
+
+    /**
+     * Get the number of header lines to skip.
+     * @return the number of header lines to skip.
+     */
+    public int getHeaderLines() {
+        return headerLines;
+    }
+
+    /**
+     * Set the number of header lines to skip.
+     * @param the number of header lines to skip.
+     */
+    public void setHeaderLines(int headerLines) {
+        this.headerLines = headerLines;
     }
 
     public Path getFile() {

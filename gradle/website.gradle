@@ -51,7 +51,8 @@ task fetchSite {
         if (!website.directory.exists()) {
             exec {
                 executable 'git'
-                args 'clone', "git@github.com:${website.repo}.git"
+                args 'clone', '--depth', '10'
+                args "git@github.com:${website.repo}.git"
                 args website.directory
             }
         } else {
@@ -93,7 +94,7 @@ task uploadWeb {
         def commit = git.headRevision.abbreviate(8).name()
         exec {
             executable 'git'
-            args 'add', '-A', 'master/apidocs'
+            args 'add', '-A', 'master/apidocs', 'master/gradle-docs'
             workingDir website.directory
         }
         exec {
@@ -103,11 +104,11 @@ task uploadWeb {
         }
         exec {
             executable 'git'
-            args 'push'
+            args 'push', 'origin', 'master'
             workingDir website.directory
         }
     }
 }
-if (System.getenv("BRANCH") == "master") {
+if (travis.isMasterBuild() && travis.activeJdk == 'oraclejdk8') {
     ciPublish.dependsOn uploadWeb
 }
